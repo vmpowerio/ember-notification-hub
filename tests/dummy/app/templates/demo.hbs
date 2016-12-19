@@ -1,0 +1,28 @@
+<nav>
+    <div class="nav-wrapper">
+        <a href="https://vmpower.io" class="brand-logo"><img class="vmpower-logo" src="https://vmpower.azureedge.net/prod/dist/img/vmpower-white.png"></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li _target="blank" class="nav-button"><i class="material-icons">code</i><a _target="blank" href="https://github.com/vmpowerio">More Projects</a></li>
+        <li _target="blank" class="nav-button"><i class="material-icons">call_split</i><a class="right" href="https://github.com/vmpowerio/ember-notification-hub">Fork It!</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="row">
+    <div class="col s12 valign-wrapper">
+        <div class="valign center">
+            <div class="row">
+                <h1>Ember Notification Hub</h1>
+                <h5>Supported by</h5>
+                <a target="_blank" href="https://vmpower.io?utm_source=ember-notification-hub"><img class="vmpower-logo" src="https://vmpower.azureedge.net/blog/vmpower-logo-black.png"></a>
+            </div>
+            <a class="btn green" {{action "testPass"}}>Test Success</a>
+            <a class="btn red" {{action "testFail"}}>Test Failed</a>
+        </div>
+    </div>
+</div>
+<div class="preserved" style="line-height:1 !important">
+    <div class="col s12">
+        {{ember-notification-center bottom="-25px" openBottom="0px" left="20%" width="60%" pullDown=false}}
+    </div>
+</div>
+

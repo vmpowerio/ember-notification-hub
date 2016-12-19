@@ -1,0 +1,44 @@
+<div class="{{if isPulloutVisible 'notifications-active' 'notifications-inactive'}} notifications {{if (ember-notification-and (ember-notification-not isPullOutVisibile) (ember-notification-not pullDown)) "notifications-anim-inactive-pull-up"}} {{if (ember-notification-and (ember-notification-not isPullOutVisibile) pullDown) "notifications-anim-inactive-pull-down"}} {{if (ember-notification-and isPullOutVisibile (ember-notification-not pullDown)) "notifications-anim-active-pull-up"}} {{if (ember-notification-and isPullOutVisibile pullDown) "notifications-anim-active-pull-down"}}" style="{{if (ember-notification-not pullDown) (concat "bottom: " (if isPulloutVisible openBottom bottom))}}; width: {{width}}; left: {{left}}; {{if pullDown (concat "top:" (if isPulloutVisible openTop top))}};">
+    {{#if pullDown}}
+        {{ember-notification-pull-out notifications=notifications}}
+    {{/if}}
+    <div {{action "togglePullout"}} class="handle {{if notifications.inProgress "green"}} {{unless (ember-notification-is-equal lastNotification.status "Failed") "light-blue" "red"}}">
+         <div class="handle-container">
+            <div class="left notification-title white-text">
+                <i class="material-icons tiny notification-open left">more_vert</i>
+                <div class="truncate notification-text">
+                {{#if notifications.inProgress}}
+                    <div class="preloader-wrapper tiny-spinner active left">
+                        <div class="spinner-layer spinner-green-only">
+                            <div class="circle-clipper left">
+                            <div class="circle"></div>
+                            </div><div class="gap-patch">
+                            <div class="circle"></div>
+                            </div><div class="circle-clipper right">
+                            <div class="circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                    {{notifications.inProgress}} Pending Tasks
+                {{else}}
+                    {{#if lastNotification}}
+                        {{lastNotification.status}}: {{lastNotification.description}}
+                    {{else}}
+                        Notifications
+                    {{/if}}
+                {{/if}}
+                </div>
+
+            </div>
+            <div class="right notification-indicator">
+                <i class="material-icons indicator">done</i><div class="counter">{{notifications.succeeded}}</div>
+            </div>
+            <div class="right notification-indicator">
+                <i class="material-icons indicator">error_outline</i><div class="counter">{{notifications.failed}}</div>
+            </div>
+        </div>
+     </div>
+     {{#if (ember-notification-not pullDown)}}
+        {{ember-notification-pull-out notifications=notifications}}
+     {{/if}}
+</div>

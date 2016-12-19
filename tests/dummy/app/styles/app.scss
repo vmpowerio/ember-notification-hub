@@ -1,0 +1,27 @@
+@import 'app/styles/app';
+$nav-bar-color: #ff9800;
+.nav-wrapper {
+    background-color: $nav-bar-color
+}
+.preserved {
+    line-height: unset !important;
+    i {
+        margin-right: unset !important;
+    }
+    strong {
+        font-weight: bold;
+    }
+}
+.vmpower-logo {
+    width: 256px;
+}
+.nav-button {
+    display: inline-flex
+}
+.valign-wrapper {
+    height: 80vh;
+}
+.valign {
+    margin-left: auto;
+    margin-right: auto;
+}
