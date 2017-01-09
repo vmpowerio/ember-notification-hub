@@ -1,7 +1,7 @@
 {
   "name": "ember-notification-hub",
-  "version": "0.0.1",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.0.3",
+  "description": "A persistent notification center for your ember apps.",
   "directories": {
     "doc": "doc",
     "test": "tests"

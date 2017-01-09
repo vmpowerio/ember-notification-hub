@@ -9,6 +9,8 @@ A small, flat design notifciation hub for your Ember app. Stick it to the top or
 
 Why? Most notification add-ons for ember do not take a promise interface, have a compact way to show many asychronous task results or persist them across sessions.
 
+**[Live Demo](http://ember-notification-hub.vmpower.io/)**
+
 ## Features
 
 - View status of multiple, in-progress async actions
