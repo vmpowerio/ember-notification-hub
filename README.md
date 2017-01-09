@@ -1,7 +1,8 @@
-![Cover Image](./img/cover-image.png)
-![Demo Gif](./img/demo.gif)
+[![Cover Image](https://github.com/vmpowerio/ember-notification-hub/raw/master/img/cover-image.png)](http://ember-notification-hub.vmpower.io/)
+[![Demo Gif](https://github.com/vmpowerio/ember-notification-hub/raw/master/img/demo.gif)](http://ember-notification-hub.vmpower.io/)
 [![Build Status](https://travis-ci.org/vmpowerio/ember-notification-hub.svg?branch=master)](https://travis-ci.org/vmpowerio/ember-notification-hub)
 [![Code Climate](https://codeclimate.com/github/vmpowerio/ember-notification-hub/badges/gpa.svg)](https://codeclimate.com/github/vmpowerio/ember-notification-hub)
+[![Ember Observer Score](https://emberobserver.com/badges/ember-notification-hub.svg)](https://emberobserver.com/addons/ember-notification-hub)
 
 # ember-notification-hub
 
