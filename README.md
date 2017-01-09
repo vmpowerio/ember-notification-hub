@@ -1,5 +1,6 @@
 ![Cover Image](./img/cover-image.png)
 ![Demo Gif](./img/demo.gif)
+
 # ember-notification-hub
 
 A small, flat design notifciation hub for your Ember app. Stick it to the top or bottom of your page. Show your users what asynchronous actions are pending, failed or completed.
