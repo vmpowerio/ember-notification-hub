@@ -10,6 +10,8 @@ module('Unit | Helper | ember notification not');
 
 // Replace this with your real tests.
 test('it works', function (assert) {
-    let result = emberNotificationNot([42]);
-    assert.ok(result);
+    let result1 = emberNotificationNot([true]);
+    let result2 = emberNotificationNot([false]);
+    assert.equal(result1, false);
+    assert.equal(result2, true);
 });

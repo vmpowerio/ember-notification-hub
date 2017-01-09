@@ -1,6 +1,6 @@
 import {
     emberNotificationAnd
-} from 'dummy/helpers/ember-notification-and';
+} from 'ember-notif-hub/helpers/ember-notification-and';
 import {
     module,
     test

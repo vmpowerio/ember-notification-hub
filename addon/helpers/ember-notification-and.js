@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
-export function and(params) {
+export function emberNotificationAnd(params) {
     return params[0] && params[1];
 }
 
-export default Ember.Helper.helper(and);
+export default Ember.Helper.helper(emberNotificationAnd);

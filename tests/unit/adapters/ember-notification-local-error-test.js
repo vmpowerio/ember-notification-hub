@@ -12,5 +12,4 @@ moduleFor('adapter:ember-notification-local-error', 'Unit | Adapter | ember noti
 test('it exists', function (assert) {
     let adapter = this.subject();
     assert.ok(adapter);
-    console.log(adapter.constuctor.name);
 });

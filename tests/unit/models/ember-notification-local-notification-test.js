@@ -5,7 +5,7 @@ import {
 
 moduleForModel('ember-notification-local-notification', 'Unit | Model | ember notification local notification', {
     // Specify the other units that are required for this test.
-    needs: []
+    needs: ['model:ember-notification-local-error']
 });
 
 test('it exists', function (assert) {
