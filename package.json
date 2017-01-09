@@ -1,6 +1,6 @@
 {
-  "name": "ember-notif-hub",
-  "version": "0.0.0",
+  "name": "ember-notification-hub",
+  "version": "0.0.1",
   "description": "The default blueprint for ember-cli addons.",
   "directories": {
     "doc": "doc",
@@ -11,11 +11,11 @@
     "start": "ember server",
     "test": "ember try:each"
   },
-  "repository": "",
+  "repository": "https://github.com/vmpowerio/ember-notification-hub",
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": "sedouard",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.2",
