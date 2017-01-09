@@ -133,9 +133,7 @@ This addon uses [`ember-localstorage-adapter`](https://github.com/locks/ember-lo
 
 ### Installed Ember Components
 
-- 
-
-Because of this persistence, two internally-used models are added upon installation:
+The following Ember components are added to your application after install:
 
 - Service `emberNotificationCenter` - Used to push notifications from anywhere in your app
 - Component `emberNotificationCenter` - The notification hub
