@@ -32,36 +32,13 @@ export default Ember.Service.extend({
         this.set('notifications', newArray);
     },
     inProgress: Ember.computed('notifications.@each.status', function () {
-        var count = 0;
-        this.get('notifications').forEach(notif => {
-            if (notif.get('status') === 'Pending') {
-                count += 1;
-            }
-        });
-        return count;
+        return this._countNotifications('Pending');
     }),
     failed: Ember.computed('notifications.@each.status', function () {
-        var count = 0;
-        this.get('notifications').forEach(notif => {
-            if (notif.get('status') === 'Failed') {
-                count += 1;
-            }
-        });
-
-        return count;
+        return this._countNotifications('Failed');
     }),
     succeeded: Ember.computed('notifications.@each.status', function () {
-        var count = 0;
-        Ember.debug('counting succeeded...');
-        this.get('notifications').forEach(notif => {
-            Ember.debug(notif.status);
-            if (notif.get('status') === 'Success') {
-                count += 1;
-            }
-        });
-        Ember.debug('succeeded: ');
-        Ember.debug(count);
-        return count;
+        return this._countNotifications('Success');
     }),
     notificationsObserver: Ember.computed('notifications.@each', 'notifications', function () {
         this.get('store').findAll('ember-notification-local-notification')
@@ -77,6 +54,15 @@ export default Ember.Service.extend({
             record.promise = promise;
             this._pushTaskNotification(record);
         }
+    },
+    _countNotifications: function (status) {
+        var count = 0;
+        this.get('notifications').forEach(notif => {
+            if (notif.get('status') === status) {
+                count += 1;
+            }
+        });
+        return count;
     },
     _pushAlertNotification: function (notification) {
         notification.save();
@@ -97,19 +83,10 @@ export default Ember.Service.extend({
                 if (!err) {
                     return notification.set('status', 'Failed');
                 }
-                if (Array.isArray(err)) {
+                if (Array.isArray(err) || err.errros) {
                     let errPromises = [];
-                    err.forEach(error => {
-                        let localError = this.get('store').createRecord('ember-notification-local-error', error);
-                        notification.get('errors').pushObject(localError);
-                        errPromises.push(localError.save());
-                    });
-                    promise = Ember.RSVP.all(errPromises).then(() => {
-                        return notification.save();
-                    });
-                } else if (err.errors) {
-                    let errPromises = [];
-                    err.errors.forEach(error => {
+                    let errs = Array.isArray(err) ? err : err.errors;
+                    errs.forEach(error => {
                         let localError = this.get('store').createRecord('ember-notification-local-error', error);
                         notification.get('errors').pushObject(localError);
                         errPromises.push(localError.save());
