@@ -4,8 +4,6 @@ build:
     - npm set registry http://10.0.0.5:4873/
     - npm install
     - npm install ember-cli -g
-    - npm install grunt-cli -g
-    - grunt jscs
     - ember test
 deploy:
   git_push:
