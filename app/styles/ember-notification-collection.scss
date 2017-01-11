@@ -1,0 +1,16 @@
+// From https://github.com/Dogfalo/materialize/blob/master/sass/components/_global.scss
+// Collections
+.ember-notification-collection {
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+
+  .ember-notification-collection-item {
+    background-color: #fff;
+    line-height: 1.5rem;
+    padding: 10px 20px;
+    margin: 0;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: left
+  }
+}

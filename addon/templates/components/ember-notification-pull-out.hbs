@@ -1,10 +1,10 @@
-<div class="collapsible pullout">
-    <ul class="collection">
+<div class="ember-notification-collapsible ember-notification-pullout">
+    <ul class="ember-notification-collection">
         {{#each notifications.notifications key="@index" as |notification|}}
-            <li style="touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);" class="collection-item {{if (ember-notification-is-equal notification.status "Pending") "glow-pending"}}">
+            <li style="touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);" class="ember-notification-collection-item {{if (ember-notification-is-equal notification.status "Pending") "glow-pending"}}">
                 <div for="task1" style="text-decoration: none">
                     <strong>{{notification.title}}</strong>
-                    <a href="#" class="secondary-content">
+                    <a class="ember-notification-secondary-content">
                         {{#if (ember-notification-is-equal notification.status "Success")}}
                             <span class="ultra-small success">{{notification.status}}</span>
                         {{else if (ember-notification-is-equal notification.status "Pending")}}
@@ -22,7 +22,7 @@
                     <ul>
                     {{#each notification.errors key="@index" as |error|}}
                         <li>
-                            <i><strong class="red-text">{{error.code}}:</strong> {{error.title}}</i>
+                            <i><strong class="ember-notification-red-text">{{error.code}}:</strong> {{error.title}}</i>
                         </li>
                     {{/each}}
                     </ul>
@@ -30,8 +30,8 @@
             </li>
         {{/each}}
         {{#if notifications.notifications.length}}
-            <li {{action "clearAll"}} style="touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);" class="collection-item">
-                <div class="ember-notif-clear-all" for="task1" style="text-decoration: none; center-align">
+            <li {{action "clearAll"}} style="touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);" class="ember-notification-collection-item">
+                <div class="ember-notification-clear-all" for="task1" style="text-decoration: none; center-align">
                     Clear All
                 </div>
                 <i>{{notification.description}}</i>

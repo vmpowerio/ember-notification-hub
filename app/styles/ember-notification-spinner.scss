@@ -157,8 +157,8 @@
   90% { opacity: 1; }
   100% { opacity: 0; }
 }
-div.notifications {
-    .preloader-wrapper {
+div.ember-notification-notifications {
+    .ember-notification-preloader-wrapper {
         display: inline-block;
         position: relative;
         width: 48px;
@@ -177,42 +177,42 @@ div.notifications {
             height: 64px;
         }
 
-        &.active {
+        &.ember-notification-active {
             /* duration: 360 * ARCTIME / (ARCSTARTROT + (360-ARCSIZE)) */
             -webkit-animation: container-rotate 1568ms linear infinite;
             animation: container-rotate 1568ms linear infinite;
         }
     }
-    .circle {
+    .ember-notification-circle {
         border-radius: 50%;
     }
     
 
-    .spinner-layer {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    border-color: $spinner-default-color;
+    .ember-notification-spinner-layer {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      border-color: $spinner-default-color;
     }
 
-    .spinner-blue,
-    .spinner-blue-only {
+    .ember-notification-spinner-blue,
+    .ember-notification-spinner-blue-only {
     border-color: #4285f4;
     }
 
-    .spinner-red,
-    .spinner-red-only {
+    .ember-notification-spinner-red,
+    .ember-notification-spinner-red-only {
     border-color: #db4437;
     }
 
-    .spinner-yellow,
-    .spinner-yellow-only {
+    .ember-notification-spinner-yellow,
+    .ember-notification-spinner-yellow-only {
     border-color: #f4b400;
     }
 
-    .spinner-green,
-    .spinner-green-only {
+    .ember-notification-spinner-green,
+    .ember-notification-spinner-green-only {
     border-color: #0f9d58;
     }
 
@@ -229,35 +229,35 @@ div.notifications {
     * specific properties properly, treats them as -webkit-animation, and overrides the
     * other animation rules. See https://github.com/Polymer/platform/issues/53.
     */
-    .active .spinner-layer.spinner-blue {
+    .ember-notification-active .ember-notification-spinner-layer.ember-notification-spinner-blue {
     /* durations: 4 * ARCTIME */
     -webkit-animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite both, blue-fade-in-out 5332ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite both;
     animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite both, blue-fade-in-out 5332ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite both;
     }
 
-    .active .spinner-layer.spinner-red {
+    .ember-notification-active .ember-notification-spinner-layer.ember-notification-spinner-red {
     /* durations: 4 * ARCTIME */
     -webkit-animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite both, red-fade-in-out 5332ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite both;
     animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite both, red-fade-in-out 5332ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite both;
     }
 
-    .active .spinner-layer.spinner-yellow {
+    .ember-notification-active .ember-notification-spinner-layer.ember-notification-spinner-yellow {
     /* durations: 4 * ARCTIME */
     -webkit-animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite both, yellow-fade-in-out 5332ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite both;
     animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite both, yellow-fade-in-out 5332ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite both;
     }
 
-    .active .spinner-layer.spinner-green {
+    .ember-notification-active .ember-notification-spinner-layer.ember-notification-spinner-green {
     /* durations: 4 * ARCTIME */
     -webkit-animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite both, green-fade-in-out 5332ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite both;
     animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite both, green-fade-in-out 5332ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite both;
     }
 
-    .active .spinner-layer,
-    .active .spinner-layer.spinner-blue-only,
-    .active .spinner-layer.spinner-red-only,
-    .active .spinner-layer.spinner-yellow-only,
-    .active .spinner-layer.spinner-green-only {
+    .ember-notification-active .ember-notification-spinner-layer,
+    .ember-notification-active .ember-notification-spinner-layer.ember-notification-spinner-blue-only,
+    .ember-notification-active .ember-notification-spinner-layer.ember-notification-spinner-red-only,
+    .ember-notification-active .ember-notification-spinner-layer.ember-notification-spinner-yellow-only,
+    .ember-notification-active .ember-notification-spinner-layer.ember-notification-spinner-green-only {
     /* durations: 4 * ARCTIME */
     opacity: 1;
     -webkit-animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite both;
@@ -265,10 +265,10 @@ div.notifications {
     }
 
     /**
-    * Patch the gap that appear between the two adjacent div.circle-clipper while the
+    * Patch the gap that appear between the two adjacent div.ember-notification-circle-clipper while the
     * spinner is rotating (appears on Chrome 38, Safari 7.1, and IE 11).
     */
-    .gap-patch {
+    .ember-notification-gap-patch {
     position: absolute;
     top: 0;
     left: 45%;
@@ -278,12 +278,12 @@ div.notifications {
     border-color: inherit;
     }
 
-    .gap-patch .circle {
+    .ember-notification-gap-patch .ember-notification-circle {
     width: 1000%;
     left: -450%;
     }
 
-    .circle-clipper {
+    .ember-notification-circle-clipper {
     display: inline-block;
     position: relative;
     width: 50%;
@@ -291,7 +291,7 @@ div.notifications {
     overflow: hidden;
     border-color: inherit;
 
-    .circle {
+    .ember-notification-circle {
         width: 200%;
         height: 100%;
         border-width: 3px; /* STROKEWIDTH */
@@ -308,13 +308,13 @@ div.notifications {
         box-sizing: border-box;
     }
 
-    &.left .circle {
+    &.left .ember-notification-circle {
         left: 0;
         border-right-color: transparent !important;
         -webkit-transform: rotate(129deg);
         transform: rotate(129deg);
     }
-    &.right .circle {
+    &.right .ember-notification-circle {
         left: -100%;
         border-left-color: transparent !important;
         -webkit-transform: rotate(-129deg);
@@ -324,13 +324,13 @@ div.notifications {
 
 
 
-    .active .circle-clipper.left .circle {
+    .ember-notification-active .ember-notification-circle-clipper.left .ember-notification-circle {
     /* duration: ARCTIME */
     -webkit-animation: left-spin 1333ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite both;
     animation: left-spin 1333ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite both;
     }
 
-    .active .circle-clipper.right .circle {
+    .ember-notification-active .ember-notification-circle-clipper.right .ember-notification-circle {
     /* duration: ARCTIME */
     -webkit-animation: right-spin 1333ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite both;
     animation: right-spin 1333ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite both;

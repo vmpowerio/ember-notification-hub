@@ -1,24 +1,32 @@
 @keyframes spin { 100% { -webkit-transform: rotate(-360deg); } }
 $light-blue: #03a9f4;
 $red: #F44336;
-$green: green;
-div.notifications {
-    .collapsible {
+$green: #4CAF50;
+div.ember-notification-notifications {
+    box-sizing: border-box;
+    .ember-notification-collapsible {
+        border-top: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        border-left: 1px solid #ddd;
+    }
+    .ember-notification-icon {
+        width: 21px;
+        float: left;
+        display: inline-block;
+    }
+    .ember-notification-collapsible {
         width: 100%
     }
-    .red-text {
+    .ember-notification-red-text {
         color: $red
     }
-    .material-icons {
-        float: left
-    }
-    .left {
+    .ember-notification-left {
         float: left !important;
     }
-    .right {
+    .ember-notification-right {
         float: right !important;
     }
-    font-family: Roboto,sans-serif !important;
+    font-family: Arial, Helvetica, sans-serif;
     .ultra-small {
         font-size: 0.8rem;
         margin: 0;
@@ -34,47 +42,61 @@ div.notifications {
     .ultra-small.success {
         color: $green;
     }
+    .ember-notification-light-blue {
+        background-color: $light-blue !important;
+    }
+    .ember-notification-red {
+        background-color: $red !important;
+    }
+    .ember-notification-green {
+        background-color: $green !important;
+    }
+    .ember-notification-secondary-content {
+        float: right;
+        color: #26a69a;
+    }
 }
-div.handle {
-    .tiny-spinner {
+div.ember-notification-handle {
+    .ember-notification-tiny-spinner {
         width: 20px !important;
         height: 20px !important;
         margin-right: 5px;
     }
-    .handle-container {
+    .ember-notification-handle-container {
         margin-right: 5px;
     }
-    .truncate {
+    .ember-notification-truncate {
         display: block;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
     }
-    .counter {
+    .ember-notification-counter {
         display: inline-block;
         margin-top: 3px
     }
-    .white-text {
+    .ember-notification-white-text {
         color: white
     }
-    .notification-indicator {
+    .ember-notification-indicator {
         margin-top: 2px;
         color: white
     }
-    .notification-text {
-        margin-top: 5px;
+    .ember-notification-notification-text {
+        margin-top: 3px;
     }
-    .notification-open {
+    .ember-notification-notification-open {
         margin-top: 5px;
     }
     width: 100%;
     height: 28px;
     transition: background-color 500ms;
-    .notification-title {
-        display: inline;
-        max-width: 75%;
+    .ember-notification-notification-title {
+        display: inline-block;
+        max-width: 70%;
+        margin-top: 2px;
     }
-    .indicator {
+    .ember-notification-indicator {
         margin-right: 3px;
     }
     span {
@@ -85,62 +107,54 @@ div.handle {
         line-height: 16px;
         margin-bottom: 5px;
     }
-    .tiny {
+    .ember-notification-tiny {
         font-size: 1.1rem;
     }
 }
-.light-blue {
-    background-color: $light-blue !important;
 
-}
-.red {
-    background-color: $red !important;
-}
-
-
-.notifications-anim-inactive-pull-up {
+.ember-notification-anim-inactive-pull-up {
     z-index: 10;
     position: fixed;
     -webkit-transition: bottom 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
     transition:         bottom 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    .collection {
+    .ember-notification-collection {
         height: 0px;
     }
 }
-.notifications-anim-inactive-pull-down {
+.ember-notification-anim-inactive-pull-down {
     z-index: 10;
     position: fixed;
     -webkit-transition: top 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
     transition:         top 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    .collection {
+    .ember-notification-collection {
         height: 0px;
     }
 }
-.notifications-active-anim-active-pull-up {
+.ember-notification-anim-active-pull-up {
     -webkit-transition: bottom 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
     transition:         bottom 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.notifications-active-anim-active-pull-down {
+.ember-notification-anim-active-pull-down {
     -webkit-transition: top 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
     transition:         top 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.notifications-active {
+.ember-notification-notifications-active {
     position: fixed;
     background-color: #fff;
     border-color: #fff !important;
     z-index: 9;
     overflow: hidden;
-    .collection {
+    .ember-notification-collection {
         height: unset;
     }
     
 
-    div.pullout {
+    div.ember-notification-pullout {
         padding: 0;
         margin: 0;
         height: 175px;
         overflow: scroll;
-
+        
         ul {
             padding: 0;
             margin: 0;
