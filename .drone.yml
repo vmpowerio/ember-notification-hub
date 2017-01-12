@@ -3,9 +3,9 @@ build:
   commands:
     - npm set registry http://10.0.0.5:4873/
     - npm install
+    - npm install -g bower
+    - bower install --allow-root
     - npm install ember-cli -g
-    - npm install grunt-cli -g
-    - grunt jscs
     - ember test
 deploy:
   git_push:
