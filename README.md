@@ -132,7 +132,6 @@ This addon uses [`ember-localstorage-adapter`](https://github.com/locks/ember-lo
 ### Dependencies
 
 - Ember Local Storage Adapter
-- Roberto Fonface
 
 ### Installed Ember Components
 

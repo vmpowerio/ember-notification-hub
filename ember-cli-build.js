@@ -1,8 +1,8 @@
 /*jshint node:true*/
 /* global require, module */
 var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
-var nodeSass = require('node-sass')
-module.exports = function(defaults) {
+var nodeSass = require('node-sass');
+module.exports = function (defaults) {
     var app = new EmberAddon(defaults, {
         nodeSass: nodeSass,
         includePaths: [

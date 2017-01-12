@@ -1,7 +1,8 @@
+/*jshint node:true*/
 var grunt = require('grunt');
 require('load-grunt-tasks')(grunt);
 
-var files = ['app/**/*.js', 'addon/**/*.js', 'blueprints/**/*.js', 'tests/**/*.js'];
+var files = ['app/**/*.js', 'addon/**/*.js', 'blueprints/**/*.js', 'tests/**/*.js', 'Gruntfile.js', 'ember-cli-build.js', 'index.js'];
 
 grunt.initConfig({
     jscs: {
