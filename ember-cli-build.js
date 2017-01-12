@@ -16,6 +16,9 @@ module.exports = function (defaults) {
       This build file does *not* influence how the addon or the app using it
       behave. You most likely want to be modifying `./index.js` or app's build file
     */
+    app.import('vendor/icons/favicon.ico', {
+        destDir: 'assets/icons'
+    });
     app.import('bower_components/materialize/dist/css/materialize.css');
     app.import('bower_components/material-design-icons/iconfont/material-icons.css');
     app.import('bower_components/material-design-icons/iconfont/MaterialIcons-Regular.woff', {
