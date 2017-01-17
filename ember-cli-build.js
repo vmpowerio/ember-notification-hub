@@ -20,20 +20,20 @@ module.exports = function (defaults) {
         destDir: 'assets/icons'
     });
     app.import('bower_components/materialize/dist/css/materialize.css');
-    app.import('bower_components/material-design-icons/iconfont/material-icons.css');
-    app.import('bower_components/material-design-icons/iconfont/MaterialIcons-Regular.woff', {
+    app.import('bower_components/material-design-icons-iconfont/dist/fonts/material-icons.css');
+    app.import('bower_components/material-design-icons-iconfont/dist/fonts/MaterialIcons-Regular.woff', {
         destDir: 'assets'
     });
-    app.import('bower_components/material-design-icons/iconfont/MaterialIcons-Regular.woff2', {
+    app.import('bower_components/material-design-icons-iconfont/dist/fonts/MaterialIcons-Regular.woff2', {
         destDir: 'assets'
     });
-    app.import('bower_components/material-design-icons/iconfont/MaterialIcons-Regular.svg', {
+    app.import('bower_components/material-design-icons-iconfont/dist/fonts/MaterialIcons-Regular.svg', {
         destDir: 'assets'
     });
-    app.import('bower_components/material-design-icons/iconfont/MaterialIcons-Regular.ttf', {
+    app.import('bower_components/material-design-icons-iconfont/dist/fonts/MaterialIcons-Regular.ttf', {
         destDir: 'assets'
     });
-    app.import('bower_components/material-design-icons/iconfont/MaterialIcons-Regular.eot', {
+    app.import('bower_components/material-design-icons-iconfont/dist/fonts/MaterialIcons-Regular.eot', {
         destDir: 'assets'
     });
     return app.toTree();

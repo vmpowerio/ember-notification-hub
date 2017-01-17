@@ -6,7 +6,7 @@
     "ember-cli-test-loader": "0.2.2",
     "ember-qunit-notifications": "0.1.0",
     "roboto-fontface": "^0.6.0",
-    "material-design-icons": "^3.0.1",
-    "materialize": "^0.97.8"
+    "materialize": "^0.97.8",
+    "material-design-icons-iconfont": "^3.0.3"
   }
 }
