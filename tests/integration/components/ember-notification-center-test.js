@@ -104,3 +104,9 @@ test('it renders pending and failure notification', function (assert) {
         });
     });
 });
+test('it renders icons using correct base path', function (assert) {
+    this.render(hbs `{{ember-notification-center bottom="-25px" openBottom="0px" left="20%" width="60%" pullDown=false baseAssetPath="http://someknownhost.com/path/"}}`);
+    assert.equal(this.$().html().indexOf('src="http://someknownhost.com/path/icons/ic_done_white_24dp_2x.png"') > -1, true);
+    assert.equal(this.$().html().indexOf('src="http://someknownhost.com/path/icons/ic_error_outline_white_24dp_2x.png"') > -1, true);
+    assert.equal(this.$().html().indexOf('src="http://someknownhost.com/path/icons/ic_more_vert_white_24dp_2x.png"') > -1, true);
+});

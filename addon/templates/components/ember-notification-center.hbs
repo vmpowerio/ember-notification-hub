@@ -5,7 +5,7 @@
     <div {{action "togglePullout"}} class="ember-notification-handle {{if notifications.inProgress "ember-notification-green"}} {{unless (ember-notification-is-equal lastNotification.status "Failed") "ember-notification-light-blue" "ember-notification-red"}}">
          <div class="ember-notification-handle-container">
             <div class="ember-notification-left ember-notification-notification-title ember-notification-white-text">
-                <img src="{{baseAssetPath}}/icons/ic_more_vert_white_24dp_2x.png" class="ember-notification-icon ember-notification-tiny ember-notification-notification-open ember-notification-left">
+                <img src="{{baseAssetPath}}icons/ic_more_vert_white_24dp_2x.png" class="ember-notification-icon ember-notification-tiny ember-notification-notification-open ember-notification-left">
                 <div class="ember-notification-truncate ember-notification-notification-text">
                 {{#if notifications.inProgress}}
                     <div class="ember-notification-preloader-wrapper ember-notification-active ember-notification-tiny-spinner left">
@@ -31,10 +31,10 @@
 
             </div>
             <div class="ember-notification-right ember-notification-indicator">
-                <img src="{{baseAssetPath}}/icons/ic_done_white_24dp_2x.png" class="ember-notification-icon ember-notification-indicator"><div class="ember-notification-counter">{{notifications.succeeded}}</div>
+                <img src="{{baseAssetPath}}icons/ic_done_white_24dp_2x.png" class="ember-notification-icon ember-notification-indicator"><div class="ember-notification-counter">{{notifications.succeeded}}</div>
             </div>
             <div class="ember-notification-right ember-notification-indicator">
-                <img src="{{baseAssetPath}}/icons/ic_error_outline_white_24dp_2x.png" class="ember-notification-icon ember-notification-indicator"><div class="ember-notification-counter">{{notifications.failed}}</div>
+                <img src="{{baseAssetPath}}icons/ic_error_outline_white_24dp_2x.png" class="ember-notification-icon ember-notification-indicator"><div class="ember-notification-counter">{{notifications.failed}}</div>
             </div>
         </div>
      </div>
