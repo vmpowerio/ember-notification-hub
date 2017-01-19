@@ -9,6 +9,19 @@ export default Ember.Component.extend({
     didRender: function () {
         this.set('rendered', true);
     },
+    _scheduleToggle: function () {
+        let lastToggle = Ember.run.later(() => {
+            this.send('togglePullout');
+            this.set('lastToggle', null);
+        }, 3000);
+        this.set('lastToggle', lastToggle);
+    },
+    _cancelToggle: function () {
+        if (this.get('lastToggle')) {
+            Ember.run.cancel(this.get('lastToggle'));
+            this.set('lastToggle', null);
+        }
+    },
     lastNotification: Ember.computed.alias('notifications.notifications.firstObject'),
     lastNotificationObserver: Ember.observer('lastNotification', target => {
         if (target.get('firstTime')) {
@@ -22,16 +35,14 @@ export default Ember.Component.extend({
             if (!target.get('isPulloutVisible')) {
                 target.send('togglePullout');
             }
-            if (target.get('lastToggle')) {
-                Ember.run.cancel(target.get('lastToggle'));
-            }
+            target._cancelToggle();
             target.get('lastNotification.promise')
             .then(() => {
                 if (!target.get('isPulloutVisible')) {
                     // user collapsed pullout before finishing
                     return;
                 }
-                target.send('togglePullout');
+                target._scheduleToggle();
             });
         } else {
             if (target.get('notifications.inProgress')) {
@@ -40,16 +51,10 @@ export default Ember.Component.extend({
             }
             // synchronous notification
             if (target.get('lastToggle')) {
-                Ember.run.cancel(target.get('lastToggle'));
-                target.set('lastToggle', null);
+                target._cancelToggle();
             } else {
-                target.send('togglePullout');
+                target._scheduleToggle();
             }
-            let lastToggle = Ember.run.later(() => {
-                target.send('togglePullout');
-                target.set('lastToggle', null);
-            }, 3000);
-            target.set('lastToggle', lastToggle);
         }
     }),
     actions: {
