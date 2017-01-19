@@ -3,6 +3,13 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
     emberNotificationCenter: Ember.inject.service(),
     actions: {
+        testSync: function () {
+            this.get('emberNotificationCenter').pushNotification({
+                title: 'Test Synchronous Action',
+                description: 'This shows an synchronous notification without a promise',
+                status: 'Success'
+            });
+        },
         testFail: function () {
             this.get('emberNotificationCenter').pushNotification({
                 title: 'Test Async Action 1',
