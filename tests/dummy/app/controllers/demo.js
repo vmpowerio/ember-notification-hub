@@ -6,7 +6,7 @@ export default Ember.Controller.extend({
         testSync: function () {
             this.get('emberNotificationCenter').pushNotification({
                 title: 'Test Synchronous Action',
-                description: 'This shows an asynchronous notification with a promise',
+                description: 'This shows an synchronous notification without a promise',
                 status: 'Success'
             });
         },

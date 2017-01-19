@@ -19,12 +19,25 @@ export default Ember.Component.extend({
             return;
         }
         if (target.get('lastNotification.promise')) {
-            target.send('togglePullout');
+            if (!target.get('isPulloutVisible')) {
+                target.send('togglePullout');
+            }
+            if (target.get('lastToggle')) {
+                Ember.run.cancel(target.get('lastToggle'));
+            }
             target.get('lastNotification.promise')
             .then(() => {
+                if (!target.get('isPulloutVisible')) {
+                    // user collapsed pullout before finishing
+                    return;
+                }
                 target.send('togglePullout');
             });
         } else {
+            if (target.get('notifications.inProgress')) {
+                // theres still an async promise going on
+                return;
+            }
             // synchronous notification
             if (target.get('lastToggle')) {
                 Ember.run.cancel(target.get('lastToggle'));
@@ -44,7 +57,9 @@ export default Ember.Component.extend({
             notification.get('retryTarget').send('retryAction', notification.get('retryArgs'));
         },
         togglePullout: function () {
-
+            if (this.get('lastToggle')) {
+                Ember.run.cancel(this.get('lastToggle'));
+            }
             // This hack is required since Chrome isn't smart enough
             // to trigger our animations right away. We're just
             // redrawing those elements.
