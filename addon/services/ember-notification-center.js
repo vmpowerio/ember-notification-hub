@@ -4,6 +4,7 @@ export default Ember.Service.extend({
     store: Ember.inject.service(),
     init: function () {
         this._super();
+        this.set('notifications.loading', true);
         this.get('store').findAll('ember-notification-local-notification')
             .then(notifications => {
                 notifications.forEach(notification => {
@@ -12,6 +13,7 @@ export default Ember.Service.extend({
                     }
                     this.get('notifications').pushObject(notification);
                 });
+                this.set('notifications.loading', false);
             });
         this.get('store').findAll('ember-notification-local-error');
     },
