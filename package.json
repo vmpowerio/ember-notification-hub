@@ -1,6 +1,6 @@
 {
   "name": "ember-notification-hub",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A persistent notification center for your ember apps.",
   "directories": {
     "doc": "doc",

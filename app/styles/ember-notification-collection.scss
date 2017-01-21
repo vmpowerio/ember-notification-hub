@@ -4,6 +4,8 @@
   border-radius: 2px;
   overflow: hidden;
   position: relative;
+  // for some reason safari needs this
+  min-height: 1px;
 
   .ember-notification-collection-item {
     background-color: #fff;
