@@ -85,7 +85,7 @@ export default Ember.Service.extend({
                 if (!err) {
                     return notification.set('status', 'Failed');
                 }
-                if (Array.isArray(err) || err.errros) {
+                if (Array.isArray(err) || err.errors) {
                     let errPromises = [];
                     let errs = Array.isArray(err) ? err : err.errors;
                     errs.forEach(error => {
