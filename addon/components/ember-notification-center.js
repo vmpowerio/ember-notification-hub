@@ -8,8 +8,9 @@ export default Ember.Component.extend({
     showLastNotification: false,
     notifications: Ember.inject.service('emberNotificationCenter'),
     _notificationStyle: Ember.computed(
-        'left', 'width', 'top', 'openTop', 'bottom', 'opemBottom',
+        'left', 'width', 'top', 'openTop', 'bottom', 'openBottom',
         'fontFamily', 'pullDown', 'isPulloutVisible', function() {
+
         let left = this.get('left') || '20%';
         let width = this.get('width') || '60%';
         let fontFamily = this.get('fontFamily');
