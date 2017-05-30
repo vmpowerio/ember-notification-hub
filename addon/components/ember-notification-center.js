@@ -3,9 +3,10 @@ import layout from '../templates/components/ember-notification-center';
 export default Ember.Component.extend({
     layout,
     notifications: Ember.inject.service('emberNotificationCenter'),
+    lastToggle: null,
+    baseAssetPath: '/',
     isPulloutVisible: false,
     showLastNotification: false,
-    lastToggle: null,
     didRender: function () {
         this.set('rendered', true);
     },
