@@ -1,44 +1,44 @@
-<div class="{{if isPulloutVisible 'ember-notification-notifications-active' 'ember-notification-notifications-inactive'}} ember-notification-notifications {{if (ember-notification-and (ember-notification-not isPullOutVisibile) (ember-notification-not pullDown)) "ember-notification-anim-inactive-pull-up"}} {{if (ember-notification-and (ember-notification-not isPullOutVisibile) pullDown) "ember-notification-anim-inactive-pull-down"}} {{if (ember-notification-and isPullOutVisibile (ember-notification-not pullDown)) "ember-notification-anim-active-pull-up"}} {{if (ember-notification-and isPullOutVisibile pullDown) "ember-notification-anim-active-pull-down"}}" style="{{if (ember-notification-not pullDown) (concat "bottom: " (if isPulloutVisible openBottom bottom))}}; width: {{width}}; left: {{left}}; {{if pullDown (concat "top:" (if isPulloutVisible openTop top))}}; {{if fontFamily (concat "font-family:" fontFamily)}}">
-    {{#if pullDown}}
-        {{ember-notification-pull-out notifications=notifications}}
-    {{/if}}
-    <div {{action "togglePullout"}} class="ember-notification-handle {{if notifications.inProgress "ember-notification-green"}} {{unless (ember-notification-is-equal lastNotification.status "Failed") "ember-notification-light-blue" "ember-notification-red"}}">
-         <div class="ember-notification-handle-container">
-            <div class="ember-notification-left ember-notification-notification-title ember-notification-white-text">
-                <img src="{{baseAssetPath}}icons/ic_more_vert_white_24dp_2x.png" class="ember-notification-icon ember-notification-tiny ember-notification-notification-open ember-notification-left">
-                <div class="ember-notification-truncate ember-notification-notification-text">
-                {{#if notifications.inProgress}}
-                    <div class="ember-notification-preloader-wrapper ember-notification-active ember-notification-tiny-spinner left">
-                        <div class="ember-notification-spinner-layer ember-notification-spinner-green-only">
-                            <div class="ember-notification-circle-clipper left">
-                            <div class="ember-notification-circle"></div>
-                            </div><div class="ember-notification-gap-patch">
-                            <div class="ember-notification-circle"></div>
-                            </div><div class="ember-notification-circle-clipper right">
-                            <div class="ember-notification-circle"></div>
-                            </div>
-                        </div>
-                    </div>
-                    {{notifications.inProgress}} Pending Tasks
-                {{else}}
-                    {{#if lastNotification}}
-                        {{lastNotification.status}}: {{lastNotification.description}}
-                    {{else}}
-                        Notifications
-                    {{/if}}
-                {{/if}}
-                </div>
+<div class="{{if isPulloutVisible 'ember-notification-notifications-active' 'ember-notification-notifications-inactive'}} ember-notification-notifications {{if (ember-notification-and (ember-notification-not isPullOutVisibile) (ember-notification-not pullDown)) "ember-notification-anim-inactive-pull-up"}} {{if (ember-notification-and (ember-notification-not isPullOutVisibile) pullDown) "ember-notification-anim-inactive-pull-down"}} {{if (ember-notification-and isPullOutVisibile (ember-notification-not pullDown)) "ember-notification-anim-active-pull-up"}} {{if (ember-notification-and isPullOutVisibile pullDown) "ember-notification-anim-active-pull-down"}}" style={{_notificationStyle}}>
+	{{#if pullDown}}
+		{{ember-notification-pull-out notifications=notifications}}
+	{{/if}}
+	<div {{action "togglePullout"}} class="ember-notification-handle {{if notifications.inProgress "ember-notification-green"}} {{unless (ember-notification-is-equal lastNotification.status "Failed") "ember-notification-light-blue" "ember-notification-red"}}">
+		 <div class="ember-notification-handle-container">
+			<div class="ember-notification-left ember-notification-notification-title ember-notification-white-text">
+				<img src="{{baseAssetPath}}icons/ic_more_vert_white_24dp_2x.png" class="ember-notification-icon ember-notification-tiny ember-notification-notification-open ember-notification-left">
+				<div class="ember-notification-truncate ember-notification-notification-text">
+				{{#if notifications.inProgress}}
+					<div class="ember-notification-preloader-wrapper ember-notification-active ember-notification-tiny-spinner left">
+						<div class="ember-notification-spinner-layer ember-notification-spinner-green-only">
+							<div class="ember-notification-circle-clipper left">
+							<div class="ember-notification-circle"></div>
+							</div><div class="ember-notification-gap-patch">
+							<div class="ember-notification-circle"></div>
+							</div><div class="ember-notification-circle-clipper right">
+							<div class="ember-notification-circle"></div>
+							</div>
+						</div>
+					</div>
+					{{notifications.inProgress}} Pending Tasks
+				{{else}}
+					{{#if lastNotification}}
+						{{lastNotification.status}}: {{lastNotification.description}}
+					{{else}}
+						Notifications
+					{{/if}}
+				{{/if}}
+				</div>
 
-            </div>
-            <div class="ember-notification-right ember-notification-indicator">
-                <img src="{{baseAssetPath}}icons/ic_done_white_24dp_2x.png" class="ember-notification-icon ember-notification-indicator"><div class="ember-notification-counter">{{notifications.succeeded}}</div>
-            </div>
-            <div class="ember-notification-right ember-notification-indicator">
-                <img src="{{baseAssetPath}}icons/ic_error_outline_white_24dp_2x.png" class="ember-notification-icon ember-notification-indicator"><div class="ember-notification-counter">{{notifications.failed}}</div>
-            </div>
-        </div>
-     </div>
-     {{#if (ember-notification-not pullDown)}}
-        {{ember-notification-pull-out notifications=notifications}}
-     {{/if}}
+			</div>
+			<div class="ember-notification-right ember-notification-indicator">
+				<img src="{{baseAssetPath}}icons/ic_done_white_24dp_2x.png" class="ember-notification-icon ember-notification-indicator"><div class="ember-notification-counter">{{notifications.succeeded}}</div>
+			</div>
+			<div class="ember-notification-right ember-notification-indicator">
+				<img src="{{baseAssetPath}}icons/ic_error_outline_white_24dp_2x.png" class="ember-notification-icon ember-notification-indicator"><div class="ember-notification-counter">{{notifications.failed}}</div>
+			</div>
+		</div>
+	 </div>
+	 {{#if (ember-notification-not pullDown)}}
+		{{ember-notification-pull-out notifications=notifications}}
+	 {{/if}}
 </div>
