@@ -17,6 +17,7 @@ module.exports = {
 
         config.sassOptions.includePaths.push('app/styles');
 
+        this.ui.writeLine('Including Ember Notification Hub PNG Icons...');
         // these come from the material-icons bower package
         // but including the icon font would add up to 400-500kb to the app
         app.import('vendor/icons/ic_done_white_24dp_2x.png', {
