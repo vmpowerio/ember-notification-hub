@@ -1,4 +1,4 @@
 export {
     default
 }
-from 'ember-notif-hub/components/ember-notification-pull-out';
+from 'ember-notification-hub/components/ember-notification-pull-out';

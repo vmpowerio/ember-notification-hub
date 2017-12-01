@@ -1,4 +1,4 @@
 export {
     default
 }
-from 'ember-notif-hub/services/ember-notification-center';
+from 'ember-notification-hub/services/ember-notification-center';

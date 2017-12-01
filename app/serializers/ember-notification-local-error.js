@@ -1,4 +1,4 @@
 export {
     default
 }
-from 'ember-notif-hub/serializers/ember-notification-local-error';
+from 'ember-notification-hub/serializers/ember-notification-local-error';

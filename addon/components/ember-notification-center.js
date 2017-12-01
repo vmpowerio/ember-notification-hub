@@ -27,13 +27,13 @@ export default Ember.Component.extend({
         let style = `width: ${width}; left: ${left};`;
 
         if(fontFamily) {
-            style += ` font-family: ${fontFamily};`
+            style += ` font-family: ${fontFamily};`;
         }
 
         if(!pullDown) {
-            style += ` bottom: ${isPulloutVisible ? openBottom : bottom};`
+            style += ` bottom: ${isPulloutVisible ? openBottom : bottom};`;
         } else {
-            style += ` top: ${isPulloutVisible ? openTop : top};`
+            style += ` top: ${isPulloutVisible ? openTop : top};`;
         }
 
         return Ember.String.htmlSafe(style);
