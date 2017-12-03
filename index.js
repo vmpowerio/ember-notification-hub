@@ -4,33 +4,36 @@
 module.exports = {
     name: 'ember-notification-hub',
 
-    included: function(app) {
+    included() {
         this._super.included.apply(this, arguments);
         this._ensureThisImport();
-
-        let config = this._getAddonOptions();
-
-        if (!config.sassOptions) {
-            config.sassOptions = {};
-            config.sassOptions.includePaths = [];
-        }
-
-        config.sassOptions.includePaths.push('app/styles');
+        this._setOptions();
 
         this.ui.writeLine('Including Ember Notification Hub PNG Icons...');
         // these come from the material-icons bower package
         // but including the icon font would add up to 400-500kb to the app
-        app.import('vendor/icons/ic_done_white_24dp_2x.png', {
+        this.import('vendor/icons/ic_done_white_24dp_2x.png', {
             destDir: 'icons'
         });
 
-        app.import('vendor/icons/ic_error_outline_white_24dp_2x.png', {
+        this.import('vendor/icons/ic_error_outline_white_24dp_2x.png', {
             destDir: 'icons'
         });
 
-        app.import('vendor/icons/ic_more_vert_white_24dp_2x.png', {
+        this.import('vendor/icons/ic_more_vert_white_24dp_2x.png', {
             destDir: 'icons'
         });
+    },
+
+    _setOptions() {
+      let config = this._getAddonOptions();
+
+      if (!config.sassOptions) {
+        config.sassOptions = {};
+        config.sassOptions.includePaths = [];
+      }
+
+      config.sassOptions.includePaths.push('app/styles');
     },
 
     _getAddonOptions() {
