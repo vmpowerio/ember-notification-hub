@@ -1,4 +1,4 @@
 export {
     default,
     emberNotificationNot
-} from 'ember-notif-hub/helpers/ember-notification-not';
+} from 'ember-notification-hub/helpers/ember-notification-not';

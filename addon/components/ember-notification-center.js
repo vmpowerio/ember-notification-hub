@@ -2,10 +2,42 @@ import Ember from 'ember';
 import layout from '../templates/components/ember-notification-center';
 export default Ember.Component.extend({
     layout,
-    notifications: Ember.inject.service('emberNotificationCenter'),
+    lastToggle: null,
+    baseAssetPath: '/',
     isPulloutVisible: false,
     showLastNotification: false,
-    lastToggle: null,
+    notifications: Ember.inject.service('emberNotificationCenter'),
+    _notificationStyle: Ember.computed(
+        'left', 'width', 'top', 'openTop', 'bottom', 'openBottom',
+        'fontFamily', 'pullDown', 'isPulloutVisible', function() {
+
+        let left = this.get('left') || '20%';
+        let width = this.get('width') || '60%';
+        let fontFamily = this.get('fontFamily');
+
+        let top = this.get('top') || '-30px';
+        let openTop = this.get('openTop') || '0';
+
+        let bottom = this.get('bottom') || '-30px';
+        let openBottom = this.get('openBottom') || '0';
+
+        let pullDown = this.get('pullDown');
+        let isPulloutVisible = this.get('isPulloutVisible');
+
+        let style = `width: ${width}; left: ${left};`;
+
+        if(fontFamily) {
+            style += ` font-family: ${fontFamily};`;
+        }
+
+        if(!pullDown) {
+            style += ` bottom: ${isPulloutVisible ? openBottom : bottom};`;
+        } else {
+            style += ` top: ${isPulloutVisible ? openTop : top};`;
+        }
+
+        return Ember.String.htmlSafe(style);
+    }),
     didRender: function () {
         this.set('rendered', true);
     },

@@ -1,4 +1,4 @@
 export {
     default,
     emberNotificationIsEqual
-} from 'ember-notif-hub/helpers/ember-notification-is-equal';
+} from 'ember-notification-hub/helpers/ember-notification-is-equal';

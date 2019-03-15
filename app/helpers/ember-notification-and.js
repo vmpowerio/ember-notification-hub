@@ -1,4 +1,4 @@
 export {
     default,
     emberNotificationAnd
-} from 'ember-notif-hub/helpers/ember-notification-and';
+} from 'ember-notification-hub/helpers/ember-notification-and';

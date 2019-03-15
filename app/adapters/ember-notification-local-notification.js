@@ -1,4 +1,4 @@
 export {
     default
 }
-from 'ember-notif-hub/adapters/ember-notification-local-notification';
+from 'ember-notification-hub/adapters/ember-notification-local-notification';
