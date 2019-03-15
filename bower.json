@@ -1,6 +1,6 @@
 {
   "name": "ember-notification-hub",
   "dependencies": {
-    "materialize": "^0.100.2"
+    "materialize": "0.97.6"
   }
 }

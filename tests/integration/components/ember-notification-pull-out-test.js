@@ -1,8 +1,10 @@
+import EmberObject from '@ember/object';
+import { run } from '@ember/runloop';
+import { A } from '@ember/array';
 import {
     moduleForComponent,
     test
 } from 'ember-qunit';
-import Ember from 'ember';
 import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('ember-notification-pull-out', 'Integration | Component | ember-notification-pull-out', {
@@ -13,23 +15,23 @@ test('it renders notifications in correct order', function (assert) {
 
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.on('myAction', function(val) { ... });
-    const notifications = Ember.A();
+    const notifications = A();
     const store = this.container.lookup('service:store');
-    const not1 = Ember.run(() => {
+    const not1 = run(() => {
         return store.createRecord('emberNotificationLocalNotification', {
             title: 'Integration Test Notification 1',
             description: 'Some description 1',
             status: 'Pending'
         });
     });
-    const not2 = Ember.run(() => {
+    const not2 = run(() => {
         return store.createRecord('emberNotificationLocalNotification', {
             title: 'Integration Test Notification 2',
             description: 'Some description 2',
             status: 'Failed'
         });
     });
-    const not3 = Ember.run(() => {
+    const not3 = run(() => {
         return store.createRecord('emberNotificationLocalNotification', {
             title: 'Integration Test Notification 3',
             description: 'Some description 3',
@@ -39,7 +41,7 @@ test('it renders notifications in correct order', function (assert) {
     notifications.unshiftObject(not1);
     notifications.unshiftObject(not2);
     notifications.unshiftObject(not3);
-    this.set('notifications', new Ember.Object({
+    this.set('notifications', new EmberObject({
         notifications: notifications
     }));
     // Template block usage:

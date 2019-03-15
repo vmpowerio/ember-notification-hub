@@ -1,13 +1,18 @@
-import Ember from 'ember';
+import { alias } from '@ember/object/computed';
+import { later, cancel } from '@ember/runloop';
+import { htmlSafe } from '@ember/template';
+import { computed, observer } from '@ember/object';
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
 import layout from '../templates/components/ember-notification-center';
-export default Ember.Component.extend({
+export default Component.extend({
     layout,
     lastToggle: null,
     baseAssetPath: '/',
     isPulloutVisible: false,
     showLastNotification: false,
-    notifications: Ember.inject.service('emberNotificationCenter'),
-    _notificationStyle: Ember.computed(
+    notifications: service('emberNotificationCenter'),
+    _notificationStyle: computed(
         'left', 'width', 'top', 'openTop', 'bottom', 'openBottom',
         'fontFamily', 'pullDown', 'isPulloutVisible', function() {
 
@@ -36,13 +41,13 @@ export default Ember.Component.extend({
             style += ` top: ${isPulloutVisible ? openTop : top};`;
         }
 
-        return Ember.String.htmlSafe(style);
+        return htmlSafe(style);
     }),
     didRender: function () {
         this.set('rendered', true);
     },
     _scheduleToggle: function () {
-        let lastToggle = Ember.run.later(() => {
+        let lastToggle = later(() => {
             this.send('togglePullout');
             this.set('lastToggle', null);
         }, 3000);
@@ -50,12 +55,12 @@ export default Ember.Component.extend({
     },
     _cancelToggle: function () {
         if (this.get('lastToggle')) {
-            Ember.run.cancel(this.get('lastToggle'));
+            cancel(this.get('lastToggle'));
             this.set('lastToggle', null);
         }
     },
-    lastNotification: Ember.computed.alias('notifications.notifications.firstObject'),
-    lastNotificationObserver: Ember.observer('lastNotification', target => {
+    lastNotification: alias('notifications.notifications.firstObject'),
+    lastNotificationObserver: observer('lastNotification', target => {
         if (target.get('firstTime')) {
             target.set('firstTime', false);
             return;
@@ -95,7 +100,7 @@ export default Ember.Component.extend({
         },
         togglePullout: function () {
             if (this.get('lastToggle')) {
-                Ember.run.cancel(this.get('lastToggle'));
+                cancel(this.get('lastToggle'));
             }
             // This hack is required since Chrome isn't smart enough
             // to trigger our animations right away. We're just

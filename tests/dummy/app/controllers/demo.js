@@ -1,7 +1,9 @@
-import Ember from 'ember';
+import { Promise } from 'rsvp';
+import { inject as service } from '@ember/service';
+import Controller from '@ember/controller';
 
-export default Ember.Controller.extend({
-    emberNotificationCenter: Ember.inject.service(),
+export default Controller.extend({
+    emberNotificationCenter: service(),
     actions: {
         testSync: function () {
             this.get('emberNotificationCenter').pushNotification({
@@ -14,7 +16,7 @@ export default Ember.Controller.extend({
             this.get('emberNotificationCenter').pushNotification({
                 title: 'Test Async Action 1',
                 description: 'This shows an asynchronous notification with a promise'
-            }, new Ember.RSVP.Promise((resolve, reject) => {
+            }, new Promise((resolve, reject) => {
                 setTimeout(() => {
                     reject([{
                             code: '404 Bad Request',
@@ -32,7 +34,7 @@ export default Ember.Controller.extend({
             this.get('emberNotificationCenter').pushNotification({
                 title: 'Test Async Action 1',
                 description: 'This shows successful asynchronous notification with a promise'
-            }, new Ember.RSVP.Promise(resolve => {
+            }, new Promise(resolve => {
                 setTimeout(() => {
                     resolve();
                 }, 3000);

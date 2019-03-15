@@ -1,10 +1,9 @@
 /* globals localStorage */
-import {
-    moduleForComponent,
-    test
-} from 'ember-qunit';
+import { Promise } from 'rsvp';
+
+import { run, scheduleOnce } from '@ember/runloop';
+import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import Ember from 'ember';
 
 moduleForComponent('ember-notification-center', 'Integration | Component | ember-notification-center', {
     integration: true,
@@ -31,11 +30,11 @@ test('it renders pending and successful notification', function (assert) {
     // Handle any actions with this.on('myAction', function(val) { ... });
     const emberNotificationCenter = this.container.lookup('service:emberNotificationCenter');
     // push first pending notification
-    Ember.run(() => {
+    run(() => {
         emberNotificationCenter.pushNotification({
             title: 'Integration Test Notification 1',
             description: 'Some description 1'
-        }, new Ember.RSVP.Promise(resolve => {
+        }, new Promise(resolve => {
             resolve();
         }));
         assert.expect(11);
@@ -44,7 +43,7 @@ test('it renders pending and successful notification', function (assert) {
         assert.ok(this.$().text().trim().indexOf('Integration Test Notification 1') > -1);
         assert.ok(this.$().text().trim().indexOf('Some description 1') > -1);
         assert.ok(this.$().text().trim().indexOf('Pending') > -1);
-        Ember.run.scheduleOnce('afterRender', () => {
+        scheduleOnce('afterRender', () => {
             assert.ok(this.$().text().trim().indexOf('Pending') === -1);
             assert.ok(this.$().text().trim().indexOf('Success') > -1);
             // # of errors should be 1
@@ -70,11 +69,11 @@ test('it renders pending and failure notification', function (assert) {
     // Handle any actions with this.on('myAction', function(val) { ... });
     const emberNotificationCenter = this.container.lookup('service:emberNotificationCenter');
     // push first pending notification
-    Ember.run(() => {
+    run(() => {
         emberNotificationCenter.pushNotification({
             title: 'Integration Test Notification 2',
             description: 'Some description 2'
-        }, new Ember.RSVP.Promise((resolve, reject) => {
+        }, new Promise((resolve, reject) => {
             reject([{
                     code: '404 Not Found',
                     title: 'We cannot find that scrumptious bagel you are looking for'
@@ -90,7 +89,7 @@ test('it renders pending and failure notification', function (assert) {
         assert.ok(this.$().text().trim().indexOf('Integration Test Notification 1') > -1);
         assert.ok(this.$().text().trim().indexOf('Some description 1') > -1);
         assert.ok(this.$().text().trim().indexOf('Pending') > -1);
-        Ember.run.scheduleOnce('afterRender', () => {
+        scheduleOnce('afterRender', () => {
             // status text
             assert.equal(this.$().text().trim().indexOf('Pending'), -1);
             // title bar text

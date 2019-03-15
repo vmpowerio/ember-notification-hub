@@ -1,7 +1,11 @@
-import Ember from 'ember';
+import { Promise, all } from 'rsvp';
+import { debug } from '@ember/debug';
+import { computed } from '@ember/object';
+import { A } from '@ember/array';
+import Service, { inject as service } from '@ember/service';
 
-export default Ember.Service.extend({
-    store: Ember.inject.service(),
+export default Service.extend({
+    store: service(),
     init: function () {
         this._super();
         this.set('notifications.loading', true);
@@ -17,9 +21,9 @@ export default Ember.Service.extend({
             });
         this.get('store').findAll('ember-notification-local-error');
     },
-    notifications: Ember.A([]),
+    notifications: A([]),
     clearAll: function () {
-        var newArray = Ember.A([]);
+        var newArray = A([]);
         this.get('notifications').forEach(notification => {
             if (notification.get('status') === 'Pending') {
                 newArray.push(notification);
@@ -33,16 +37,16 @@ export default Ember.Service.extend({
         });
         this.set('notifications', newArray);
     },
-    inProgress: Ember.computed('notifications.@each.status', function () {
+    inProgress: computed('notifications.@each.status', function () {
         return this._countNotifications('Pending');
     }),
-    failed: Ember.computed('notifications.@each.status', function () {
+    failed: computed('notifications.@each.status', function () {
         return this._countNotifications('Failed');
     }),
-    succeeded: Ember.computed('notifications.@each.status', function () {
+    succeeded: computed('notifications.@each.status', function () {
         return this._countNotifications('Success');
     }),
-    notificationsObserver: Ember.computed('notifications.@each', 'notifications', function () {
+    notificationsObserver: computed('notifications.@each', 'notifications', function () {
         this.get('store').findAll('ember-notification-local-notification')
             .then(notifications => {
                 this.set('notifications', notifications);
@@ -74,12 +78,12 @@ export default Ember.Service.extend({
         notification.set('status', 'Pending');
         this.get('notifications').unshiftObject(notification);
         notification.promise.then(() => {
-                Ember.debug('setting succeeded');
+                debug('setting succeeded');
                 notification.set('status', 'Success');
                 notification.save();
             })
             .catch(err => {
-                var promise = new Ember.RSVP.Promise(resolve => {
+                var promise = new Promise(resolve => {
                     resolve();
                 });
                 if (!err) {
@@ -93,7 +97,7 @@ export default Ember.Service.extend({
                         notification.get('errors').pushObject(localError);
                         errPromises.push(localError.save());
                     });
-                    promise = Ember.RSVP.all(errPromises).then(() => {
+                    promise = all(errPromises).then(() => {
                         return notification.save();
                     });
                 } else if (err.message) {
@@ -108,10 +112,10 @@ export default Ember.Service.extend({
                     notification.set('status', 'Failed');
                     notification.save()
                         .then(() => {
-                            Ember.debug('saved local notification!');
+                            debug('saved local notification!');
                         })
                         .catch(err => {
-                            Ember.debug(err.message);
+                            debug(err.message);
                         });
                 });
             });
