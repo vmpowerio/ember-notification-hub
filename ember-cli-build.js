@@ -19,5 +19,7 @@ module.exports = function (defaults) {
         destDir: 'assets/icons'
     });
 
+    app.import('node_modules/materialize-css/dist/css/materialize.css');
+
     return app.toTree();
 };

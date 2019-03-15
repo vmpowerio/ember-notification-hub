@@ -23,9 +23,6 @@ module.exports = {
         this.import('vendor/icons/ic_more_vert_white_24dp_2x.png', {
             destDir: 'icons'
         });
-
-
-        this.import('node_modules/materialize-css/dist/css/materialize.css');
     },
 
     _setOptions() {
