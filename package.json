@@ -44,7 +44,6 @@
     "grunt-jscs": "3.0.1",
     "load-grunt-tasks": "4.0.0",
     "loader.js": "4.7.0",
-    "materialize-css": "1.0.0",
     "qunit-dom": "0.8.4",
     "sass": "1.17.2"
   },
@@ -61,6 +60,7 @@
   "dependencies": {
     "ember-cli-babel": "7.6.0",
     "ember-cli-htmlbars": "3.0.1",
+    "materialize-css": "1.0.0",
     "ember-cli-htmlbars-inline-precompile": "2.1.0",
     "ember-cli-sass": "10.0.0",
     "ember-localstorage-adapter": "andyhot/ember-localstorage-adapter#topic/update-ember-latest"
